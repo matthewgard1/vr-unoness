@@ -20,6 +20,7 @@ object projectBuild extends Build {
         ),
 
       libraryDependencies ++= Seq(
+        "org.saintandreas" % "jovr" % "0.4.2.0"
         //"com.novus" %% "salat" % "1.9.2-SNAPSHOT"
       )
     )
