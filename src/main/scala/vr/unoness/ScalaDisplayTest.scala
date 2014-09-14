@@ -14,9 +14,21 @@ import org.lwjgl.opengl.DisplayMode
 object ScalaDisplayTest {
   def main (args: Array[String]) {
     println("live")
+    val freq = 60
+    println("loading modes...")
+    val modes = org.lwjgl.opengl.Display.getAvailableDisplayModes
+    val desired_mode = modes.filter( m => {
+      m.isFullscreenCapable() &&
+      m.getWidth() == 1920 &&
+      m.getFrequency() == freq
+    })
+
+    println("Starting")
     try {
-      Display.setDisplayMode(new DisplayMode(640, 480))
+      Display.setDisplayModeAndFullscreen(desired_mode.head)
       Display.setTitle("Episode 1 - Display Test")
+      Display.setFullscreen(true)
+      Display.setVSyncEnabled(true)
       Display.create()
     } catch { case e: LWJGLException =>
       println("Display wasn't initialized correctly.")
@@ -29,7 +41,7 @@ object ScalaDisplayTest {
         println("DOWN")
         sys.exit(0)
       }
-      Display.sync(75)
+      Display.sync(freq)
     }
 
     Display.destroy()
