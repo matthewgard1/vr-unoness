@@ -1,6 +1,7 @@
 package piggydev.unoness.vr
 
 import org.lwjgl.LWJGLException
+import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.Display
 import org.lwjgl.opengl.DisplayMode
 /**
@@ -24,6 +25,10 @@ object ScalaDisplayTest {
 
     while (!Display.isCloseRequested) {
       Display.update()
+      if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)){
+        println("DOWN")
+        sys.exit(0)
+      }
       Display.sync(75)
     }
 
