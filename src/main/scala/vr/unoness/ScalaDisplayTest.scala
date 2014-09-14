@@ -15,7 +15,7 @@ object ScalaDisplayTest {
     println("live")
     try {
       Display.setDisplayMode(new DisplayMode(640, 480))
-      Display.setTitle("Episode 1 – Display Test")
+      Display.setTitle("Episode 1 - Display Test")
       Display.create()
     } catch { case e: LWJGLException =>
       println("Display wasn't initialized correctly.")
